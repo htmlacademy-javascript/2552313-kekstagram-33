@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Амир Фарукшин](https://up.htmlacademy.ru/javascript/33/user/2552313).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Лепешкин](https://htmlacademy.ru/profile/spearance).
 
 ---
 
