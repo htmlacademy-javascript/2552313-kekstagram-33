@@ -1,5 +1,5 @@
 //ЗАДАНИЕ #1
-const STRING_CHARSET_1 = 'Любая строка';
+const STRING_CHARSET = 'Любая строка';
 const STRING_LENGTH = 10;
 const CheckLength = (charset, length) => {
   let result;
@@ -7,12 +7,12 @@ const CheckLength = (charset, length) => {
   return result;
 }
 
-const FirstTask = CheckLength (STRING_CHARSET_1, STRING_LENGTH);
+const FirstTask = CheckLength (STRING_CHARSET, STRING_LENGTH);
 //console.log(FirstTask);
 
 
 //ЗАДАНИЕ #2
-const STRING_CHARSET_2 = 'А Роза Упала На Лапу Азора';
+const PALINDROME_CHARSET = 'А Роза Упала На Лапу Азора';
 const CheckPalindrome = (charset) => {
   let result;
   let reverse = '';
@@ -25,6 +25,6 @@ const CheckPalindrome = (charset) => {
   return result;
 }
 
-const SecondTask = CheckPalindrome (STRING_CHARSET_2);
+const SecondTask = CheckPalindrome (PALINDROME_CHARSET);
 //console.log(SecondTask);
 
