@@ -7,18 +7,17 @@ const CheckLength = (charset, length) => {
   return result;
 }
 
-const FirstFuncition = CheckLength (STRING_CHARSET_1, STRING_LENGTH);
-//console.log(FirstFuncition);
+const FirstTask = CheckLength (STRING_CHARSET_1, STRING_LENGTH);
+//console.log(FirstTask);
 
 
 //ЗАДАНИЕ #2
 const STRING_CHARSET_2 = 'А Роза Упала На Лапу Азора';
 const CheckPalindrome = (charset) => {
-
+  let result;
   let reverse = '';
   charset = charset.toLowerCase();
   charset = charset.replace(/ /g, '');
-  let result;
   for (let i = charset.length; i > 0 ; i--) {
     reverse += charset[charset.length - i];
   }
@@ -26,6 +25,6 @@ const CheckPalindrome = (charset) => {
   return result;
 }
 
-const SecondFunction = CheckPalindrome (STRING_CHARSET_2);
-//console.log(SecondFunction);
+const SecondTask = CheckPalindrome (STRING_CHARSET_2);
+//console.log(SecondTask);
 
