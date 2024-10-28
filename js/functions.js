@@ -5,10 +5,10 @@ const CheckLength = (charset, length) => {
   let result;
   result = charset.length <= length;
   return result;
-}
+};
 
 const FirstTask = CheckLength (STRING_CHARSET, STRING_LENGTH);
-//console.log(FirstTask);
+console.log(FirstTask);
 
 
 //ЗАДАНИЕ #2
@@ -23,8 +23,8 @@ const CheckPalindrome = (charset) => {
   }
   result = charset === reverse;
   return result;
-}
+};
 
 const SecondTask = CheckPalindrome (PALINDROME_CHARSET);
-//console.log(SecondTask);
+console.log(SecondTask);
 
