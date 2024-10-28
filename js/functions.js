@@ -7,8 +7,8 @@ const CheckLength = (charset, length) => {
   return result;
 };
 
-const FirstTask = CheckLength (STRING_CHARSET, STRING_LENGTH);
-console.log(FirstTask);
+CheckLength (STRING_CHARSET, STRING_LENGTH);
+
 
 
 //ЗАДАНИЕ #2
@@ -25,6 +25,6 @@ const CheckPalindrome = (charset) => {
   return result;
 };
 
-const SecondTask = CheckPalindrome (PALINDROME_CHARSET);
-console.log(SecondTask);
+CheckPalindrome (PALINDROME_CHARSET);
+
 
