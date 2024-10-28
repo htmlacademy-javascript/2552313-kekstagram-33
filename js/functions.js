@@ -8,7 +8,7 @@ const CheckLength = (charset, length) => {
 }
 
 const FirstFuncition = CheckLength (STRING_CHARSET_1, STRING_LENGTH);
-console.log(FirstFuncition);
+//console.log(FirstFuncition);
 
 
 //ЗАДАНИЕ #2
@@ -19,7 +19,7 @@ const CheckPalindrome = (charset) => {
   charset = charset.toLowerCase();
   charset = charset.replace(/ /g, '');
   let result;
-  for (i = charset.length; i > 0 ; i--) {
+  for (let i = charset.length; i > 0 ; i--) {
     reverse += charset[charset.length - i];
   }
   result = charset === reverse;
@@ -27,5 +27,5 @@ const CheckPalindrome = (charset) => {
 }
 
 const SecondFunction = CheckPalindrome (STRING_CHARSET_2);
-console.log(SecondFunction);
+//console.log(SecondFunction);
 
