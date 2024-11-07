@@ -1,12 +1,15 @@
 const util = require('util');
 
-//КОНСТАНТЫ
-const MIN_COMMENT_AMOUNT = 0
-const MAX_COMMENT_AMOUNT = 5
+//НАСТРОЙКИ
+const MIN_COMMENT_AMOUNT_PER_POST = 0
+const MAX_COMMENT_AMOUNT_PER_POST = 30
+const COMMENTS_ID_SPACE = 1000;
 const MIN_AVATAR_VALUE = 1;
 const MAX_AVATAR_VALUE = 6;
 const MIN_LIKES_AMOUNT = 15;
 const MAX_LIKES_AMOUNT = 200;
+const POSTS_ARRAY_LENGTH = 25;
+//МАССИВЫ ДАННЫХ
 const DESCRIPTION = [
   'Фото дня.',
   'Как прекрасен этот мир.',
@@ -54,11 +57,9 @@ const USERNAME = [
   'Grizzly',
   'JVCurly'
 ]
-
 //ПЕРЕМЕННЫЕ
 let LastGeneratedID = 0;
 let commentsId = [];
-
 //ГЕНЕРАЦИЯ
 //ID ПОСТА
 function generatePostId() {
@@ -67,7 +68,6 @@ function generatePostId() {
     return LastGeneratedID;
   }
 }
-
 //ID КОММЕНТАРИЯ
 function generateCommentId(min, max) {
   let currentValue = getRandomInteger(min, max);
@@ -80,12 +80,10 @@ function generateCommentId(min, max) {
   commentsId.push(currentValue);
   return currentValue;
 }
-
 //ССЫЛКИ НА ФОТО
 function generatePhotoUrl(id) {
   return 'photos/' + id + '.jpg';
 }
-
 //ЧИСЛА В ДИАПАЗОНЕ
 function getRandomInteger(min, max) {
   const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
@@ -97,14 +95,13 @@ function getRandomInteger(min, max) {
 
 
 //ГЕНЕРАЦИЯ МАССИВОВ ОБЪЕКТОВ
-
-
-const getPost = (minLikes, maxLikes, minCommentAmount, maxCommentAmount, minAvatarValue, maxAvatarValue) => {
+//ПОСТЫ
+const getPost = (minLikes, maxLikes, commentSpace, minCommentAmount, maxCommentAmount, minAvatarValue, maxAvatarValue) => {
   return function () {
     let postId = generatePostId();
     let currentObject = postId();
     let commentsAmount = getRandomInteger(minCommentAmount, maxCommentAmount);
-    let comments = Array.from({length: commentsAmount}, getComment(0, commentsAmount, minAvatarValue, maxAvatarValue));
+    let comments = Array.from({length: commentsAmount}, getComment(commentSpace, minCommentAmount, maxCommentAmount, minAvatarValue, maxAvatarValue));
     return {
       id: currentObject,
       url: generatePhotoUrl(currentObject),
@@ -114,10 +111,10 @@ const getPost = (minLikes, maxLikes, minCommentAmount, maxCommentAmount, minAvat
     }
   }
 }
-
-const getComment = (minCommentAmount, maxCommentAmount, minAvatarValue, maxAvatarValue) => {
+//КОММЕНТАРИИ
+const getComment = (commentSpace, minCommentAmount, maxCommentAmount, minAvatarValue, maxAvatarValue) => {
   return function () {
-    let commentId = generateCommentId(minCommentAmount, maxCommentAmount);
+    let commentId = generateCommentId(0, commentSpace);
     return {
       id: commentId,
       avatar: `img/avatar${getRandomInteger(minAvatarValue, maxAvatarValue)}.svg`,
@@ -128,5 +125,8 @@ const getComment = (minCommentAmount, maxCommentAmount, minAvatarValue, maxAvata
 }
 
 //ВЫВОД
-let posts = Array.from({length: 1}, getPost(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT, MIN_COMMENT_AMOUNT, MAX_COMMENT_AMOUNT, MIN_AVATAR_VALUE, MAX_AVATAR_VALUE));
-console.log(util.inspect(posts, { showHidden: false, depth: null, colors: true }));
+let posts = Array.from({length: POSTS_ARRAY_LENGTH},
+  getPost(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT, COMMENTS_ID_SPACE, MIN_COMMENT_AMOUNT_PER_POST, MAX_COMMENT_AMOUNT_PER_POST, MIN_AVATAR_VALUE, MAX_AVATAR_VALUE));
+
+//Настройка node для вывода вложенного массива комментариев
+console.log(util.inspect(posts, {showHidden: false, depth: null, colors: true}));
