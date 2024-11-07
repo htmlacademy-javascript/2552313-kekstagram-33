@@ -1,4 +1,4 @@
-const util = require('util');
+//const util = require('util');
 
 //НАСТРОЙКИ
 const MIN_COMMENT_AMOUNT_PER_POST = 0;
@@ -60,6 +60,7 @@ const USERNAME = [
 //ПЕРЕМЕННЫЕ
 let LastGeneratedID = 0;
 const commentsId = [];
+
 //ГЕНЕРАЦИЯ
 //ID ПОСТА
 function generatePostId() {
@@ -82,7 +83,7 @@ function generateCommentId(min, max) {
 }
 //ССЫЛКИ НА ФОТО
 function generatePhotoUrl(id) {
-  return 'photos/' + id + '.jpg';
+  return `photos/${id}.jpg`;
 }
 //ЧИСЛА В ДИАПАЗОНЕ
 function getRandomInteger(min, max) {
@@ -93,41 +94,30 @@ function getRandomInteger(min, max) {
   return Math.floor(result);
 }
 
-
 //ГЕНЕРАЦИЯ МАССИВОВ ОБЪЕКТОВ
 //КОММЕНТАРИИ
-const getComment = (commentSpace, minCommentAmount, maxCommentAmount, minAvatarValue, maxAvatarValue) => {
-  return function () {
-    let commentId = generateCommentId(0, commentSpace);
-    return {
+const getComment = (minAvatarValue, maxAvatarValue, commentId) => ({
       id: commentId,
       avatar: `img/avatar${getRandomInteger(minAvatarValue, maxAvatarValue)}.svg`,
       message: MESSAGE[getRandomInteger(0, MESSAGE.length - 1)],
-      name: USERNAME[getRandomInteger(0, USERNAME.length - 1)]
-    };
-  };
-};
+      name: USERNAME[getRandomInteger(0, USERNAME.length - 1)]})
 //ПОСТЫ
 const getPost = (minLikes, maxLikes, commentSpace, minCommentAmount, maxCommentAmount, minAvatarValue, maxAvatarValue) => {
-  return function () {
-    const postId = generatePostId();
-    const currentObject = postId();
-    const commentsAmount = getRandomInteger(minCommentAmount, maxCommentAmount);
-    const comments = Array.from({length: commentsAmount}, getComment(commentSpace, minCommentAmount, maxCommentAmount, minAvatarValue, maxAvatarValue));
-    return {
-      id: currentObject,
-      url: generatePhotoUrl(currentObject),
-      likes: getRandomInteger(minLikes, maxLikes),
-      description: DESCRIPTION[getRandomInteger(0, DESCRIPTION.length - 1)],
-      comments: comments
-    };
+  const getId = generatePostId();
+  const postId = getId()// генерируем уникальный ID для поста
+  return {
+    id: postId, // используем полученный ID
+    url: generatePhotoUrl(postId), // передаем тот же ID в generatePhotoUrl
+    likes: getRandomInteger(minLikes, maxLikes),
+    description: DESCRIPTION[getRandomInteger(0, DESCRIPTION.length - 1)],
+    comments: Array.from({ length: getRandomInteger(minCommentAmount, maxCommentAmount) }, () =>
+      getComment(minAvatarValue, maxAvatarValue, generateCommentId(0, commentSpace))
+    ),
   };
 };
-
-
 //ВЫВОД
-const posts = Array.from({length: POSTS_ARRAY_LENGTH},
-  getPost(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT, COMMENTS_ID_SPACE, MIN_COMMENT_AMOUNT_PER_POST, MAX_COMMENT_AMOUNT_PER_POST, MIN_AVATAR_VALUE, MAX_AVATAR_VALUE));
-
+const posts = Array.from({length: POSTS_ARRAY_LENGTH}, () =>
+  getPost(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT,COMMENTS_ID_SPACE, MIN_COMMENT_AMOUNT_PER_POST, MAX_COMMENT_AMOUNT_PER_POST, MIN_AVATAR_VALUE, MAX_AVATAR_VALUE));
+//console.log(posts);
 //Настройка node для вывода вложенного массива комментариев
-console.log(util.inspect(posts, {showHidden: false, depth: null, colors: true}));
+//console.log(util.inspect(posts, {showHidden: false, depth: null, colors: true}));
