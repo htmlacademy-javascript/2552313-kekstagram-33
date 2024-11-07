@@ -1,4 +1,4 @@
-//const util = require('util');
+//import "./util.js";
 
 //НАСТРОЙКИ
 const MIN_COMMENT_AMOUNT_PER_POST = 0;
@@ -116,8 +116,10 @@ const getPost = (minLikes, maxLikes, commentSpace, minCommentAmount, maxCommentA
   };
 };
 //ВЫВОД
-Array.from({length: POSTS_ARRAY_LENGTH}, () =>
+const posts = Array.from({length: POSTS_ARRAY_LENGTH}, () =>
   getPost(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT,COMMENTS_ID_SPACE, MIN_COMMENT_AMOUNT_PER_POST, MAX_COMMENT_AMOUNT_PER_POST, MIN_AVATAR_VALUE, MAX_AVATAR_VALUE));
+
+export { posts };
 //console.log(posts);
 //Настройка node для вывода вложенного массива комментариев
 //console.log(util.inspect(posts, {showHidden: false, depth: null, colors: true}));
