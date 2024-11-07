@@ -97,10 +97,10 @@ function getRandomInteger(min, max) {
 //ГЕНЕРАЦИЯ МАССИВОВ ОБЪЕКТОВ
 //КОММЕНТАРИИ
 const getComment = (minAvatarValue, maxAvatarValue, commentId) => ({
-    id: commentId,
-    avatar: `img/avatar${getRandomInteger(minAvatarValue, maxAvatarValue)}.svg`,
-    message: MESSAGE[getRandomInteger(0, MESSAGE.length - 1)],
-    name: USERNAME[getRandomInteger(0, USERNAME.length - 1)]});
+  id: commentId,
+  avatar: `img/avatar${getRandomInteger(minAvatarValue, maxAvatarValue)}.svg`,
+  message: MESSAGE[getRandomInteger(0, MESSAGE.length - 1)],
+  name: USERNAME[getRandomInteger(0, USERNAME.length - 1)]});
 //ПОСТЫ
 const getPost = (minLikes, maxLikes, commentSpace, minCommentAmount, maxCommentAmount, minAvatarValue, maxAvatarValue) => {
   const getId = generatePostId();
