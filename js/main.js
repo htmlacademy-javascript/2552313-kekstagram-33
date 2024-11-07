@@ -97,14 +97,14 @@ function getRandomInteger(min, max) {
 //ГЕНЕРАЦИЯ МАССИВОВ ОБЪЕКТОВ
 //КОММЕНТАРИИ
 const getComment = (minAvatarValue, maxAvatarValue, commentId) => ({
-      id: commentId,
-      avatar: `img/avatar${getRandomInteger(minAvatarValue, maxAvatarValue)}.svg`,
-      message: MESSAGE[getRandomInteger(0, MESSAGE.length - 1)],
-      name: USERNAME[getRandomInteger(0, USERNAME.length - 1)]})
+    id: commentId,
+    avatar: `img/avatar${getRandomInteger(minAvatarValue, maxAvatarValue)}.svg`,
+    message: MESSAGE[getRandomInteger(0, MESSAGE.length - 1)],
+    name: USERNAME[getRandomInteger(0, USERNAME.length - 1)]});
 //ПОСТЫ
 const getPost = (minLikes, maxLikes, commentSpace, minCommentAmount, maxCommentAmount, minAvatarValue, maxAvatarValue) => {
   const getId = generatePostId();
-  const postId = getId()// генерируем уникальный ID для поста
+  const postId = getId();// генерируем уникальный ID для поста
   return {
     id: postId, // используем полученный ID
     url: generatePhotoUrl(postId), // передаем тот же ID в generatePhotoUrl
@@ -116,7 +116,7 @@ const getPost = (minLikes, maxLikes, commentSpace, minCommentAmount, maxCommentA
   };
 };
 //ВЫВОД
-const posts = Array.from({length: POSTS_ARRAY_LENGTH}, () =>
+Array.from({length: POSTS_ARRAY_LENGTH}, () =>
   getPost(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT,COMMENTS_ID_SPACE, MIN_COMMENT_AMOUNT_PER_POST, MAX_COMMENT_AMOUNT_PER_POST, MIN_AVATAR_VALUE, MAX_AVATAR_VALUE));
 //console.log(posts);
 //Настройка node для вывода вложенного массива комментариев
