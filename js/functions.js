@@ -1,9 +1,8 @@
 //ЗАДАНИЕ #1
 const STRING_CHARSET = 'Любая строка';
 const STRING_LENGTH = 1;
-const CheckLength = (charset, length) => {
-  return charset.length <= length;
-};
+const CheckLength = (charset, length) => (charset.length <= length);
+
 CheckLength (STRING_CHARSET, STRING_LENGTH);
 
 //ЗАДАНИЕ #2
@@ -13,7 +12,7 @@ const CheckPalindrome = (charset) => {
   charset = charset.toLowerCase();
   charset = charset.replace(/ /g, '');
   for (let i = charset.length - 1; i >= 0; i--) {
-      reverse += charset[i];
+    reverse += charset[i];
   }
   return charset === reverse;
 };
