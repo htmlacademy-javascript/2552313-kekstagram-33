@@ -2,10 +2,9 @@
 const STRING_CHARSET = 'Любая строка';
 const STRING_LENGTH = 1;
 const CheckLength = (charset, length) => {
-    const result = charset.length <= length;
-    return result;
+    return charset.length <= length;
 };
-CheckLength(STRING_CHARSET, STRING_LENGTH);
+CheckLength (STRING_CHARSET, STRING_LENGTH);
 
 //ЗАДАНИЕ #2
 const PALINDROME_CHARSET = 'А Роза Упала На Лапу Азора';
@@ -16,10 +15,9 @@ const CheckPalindrome = (charset) => {
     for (let i = charset.length - 1; i >= 0; i--) {
         reverse += charset[i];
     }
-    const result = charset === reverse;
-    return result;
+    return charset === reverse;
 };
-CheckPalindrome(PALINDROME_CHARSET);
+CheckPalindrome (PALINDROME_CHARSET);
 
 //ЗАДАНИЕ 3
 /*
@@ -39,8 +37,8 @@ const isOverTime = (startTime, endTime, meetingTime, meetingDuration) => {
 
 isOverTime('8:00', '17:30', '08:00', 571); //false
 isOverTime('08:00', '17:30', '14:00', 90); // true
-isOverTime('8:0', '10:0', '8:0', 120);     // true
+isOverTime('8:0', '10:0', '8:0', 120); // true
 isOverTime('08:00', '14:30', '14:00', 90); // false
-isOverTime('14:00', '17:30', '08:0', 90);  // false
+isOverTime('14:00', '17:30', '08:0', 90); // false
 isOverTime('8:00', '17:30', '08:00', 900); // false
 

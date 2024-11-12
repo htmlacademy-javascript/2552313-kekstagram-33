@@ -1,4 +1,4 @@
-import {randomInteger} from "./util.js";
+import {randomInteger} from './util.js';
 
 //НАСТРОЙКИ
 const MIN_COMMENT_AMOUNT_PER_POST = 0;
@@ -109,7 +109,6 @@ const getPost = (minLikes, maxLikes, commentSpace, minCommentAmount, maxCommentA
   };
 };
 
-const getRandomArrayPosts = () => Array.from({length: POSTS_ARRAY_LENGTH}, () => getPost(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT,COMMENTS_ID_SPACE, MIN_COMMENT_AMOUNT_PER_POST, MAX_COMMENT_AMOUNT_PER_POST, MIN_AVATAR_VALUE, MAX_AVATAR_VALUE));
-console.log(getRandomArrayPosts);
-
+const getRandomArrayPosts = () => Array.from({length: POSTS_ARRAY_LENGTH}, () =>
+  getPost(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT,COMMENTS_ID_SPACE, MIN_COMMENT_AMOUNT_PER_POST, MAX_COMMENT_AMOUNT_PER_POST, MIN_AVATAR_VALUE, MAX_AVATAR_VALUE));
 export {getRandomArrayPosts};
