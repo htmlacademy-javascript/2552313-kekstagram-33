@@ -18,7 +18,7 @@ const CheckPalindrome = (charset) => {
 };
 CheckPalindrome (PALINDROME_CHARSET);
 
-//ЗАДАНИЕ 3
+//МОДУЛЬ 5 - ЗАДАНИЕ 2
 
 /*
 '8:00' - начало рабочего дня
