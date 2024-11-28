@@ -6,6 +6,6 @@ function getRandomInteger(min, max) {
 
   return Math.floor(result);
 }
-const randomInteger = () => getRandomInteger();
+const randomInteger = (min, max) => getRandomInteger(min, max);
 
 export { randomInteger };

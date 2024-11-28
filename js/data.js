@@ -111,4 +111,8 @@ const getPost = (minLikes, maxLikes, commentSpace, minCommentAmount, maxCommentA
 
 const getRandomArrayPosts = () => Array.from({length: POSTS_ARRAY_LENGTH}, () =>
   getPost(MIN_LIKES_AMOUNT, MAX_LIKES_AMOUNT,COMMENTS_ID_SPACE, MIN_COMMENT_AMOUNT_PER_POST, MAX_COMMENT_AMOUNT_PER_POST, MIN_AVATAR_VALUE, MAX_AVATAR_VALUE));
-export {getRandomArrayPosts};
+
+
+const photos= getRandomArrayPosts();
+
+export {photos};
