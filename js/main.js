@@ -1,5 +1,1 @@
-import {getRandomArrayPosts} from './data.js';
-import './util.js';
-
-
-getRandomArrayPosts();
+import './template_render.js';
